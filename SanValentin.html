@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Ti ❤️</title>
+
+<style>
+*{ box-sizing:border-box; }
+
+body{
+    margin:0;
+    font-family:'Segoe UI', sans-serif;
+    background:linear-gradient(135deg,#ff4e88,#ff99ac);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    overflow:hidden;
+    color:white;
+    text-align:center;
+}
+
+/* SOBRE */
+.wrapper{
+    position:relative;
+    width:80%;
+    max-width:300px;
+    height:180px;
+}
+
+.envelope{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:white;
+    border-radius:12px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+.flap{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:#ff4e88;
+    clip-path:polygon(0 0, 50% 60%, 100% 0);
+    transform-origin:top;
+    transition:transform 1s ease;
+    z-index:3;
+}
+
+.open-text{
+    position:absolute;
+    bottom:15px;
+    width:100%;
+    color:#ff4e88;
+    font-weight:bold;
+}
+
+/* TARJETA */
+.container{
+    display:none;
+    width:90%;
+    max-width:400px;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(10px);
+    padding:20px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+img{
+    width:100%;
+    max-width:250px;
+    border-radius:15px;
+    margin:15px auto;
+    display:block;
+}
+
+button{
+    margin-top:15px;
+    padding:10px 20px;
+    border:none;
+    border-radius:20px;
+    background:white;
+    color:#ff4e88;
+    font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper" id="wrapper">
+    <div class="envelope"></div>
+    <div class="flap" id="flap"></div>
+    <div class="open-text">💌 Toca para abrir 💌</div>
+</div>
+
+<div class="container" id="contenido">
+    <h1>Para Ti ❤️</h1>
+
+    <img src="14FEB.jpg" alt="Nosotros">
+
+    <p>
+        Estar contigo se siente bien.
+        Me gusta lo que tenemos y cómo se dan las cosas entre nosotros.
+    </p>
+
+    <button id="btn">💌</button>
+</div>
+
+<script>
+const wrapper = document.getElementById("wrapper");
+const flap = document.getElementById("flap");
+const contenido = document.getElementById("contenido");
+
+wrapper.addEventListener("click", abrirCarta);
+wrapper.addEventListener("touchstart", abrirCarta);
+
+function abrirCarta(){
+    flap.style.transform="rotateX(180deg)";
+    setTimeout(()=>{
+        wrapper.style.display="none";
+        contenido.style.display="block";
+    },1000);
+}
+
+document.getElementById("btn").addEventListener("click",()=>{
+    alert("Siempre contigo ❤️");
+});
+</script>
+
+</body>
+</html>
